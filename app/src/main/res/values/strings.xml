@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">Weightcardio</string>
+
+    <!-- Strings related to login -->
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="btn_sign_in">Sign In</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="prompt_link_sign_up">Not yet sign up? Click here</string>
+    <string name="prompt_link_sign_in">Has an account? Click here</string>
+    <string name="prompt_select_user">Select User:</string>
+
+    <!-- Strings related to sign in -->
+    <string name="prompt_device_id">Device ID</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
+    <string name="prompt_creating_account">Creating</string>
+    <string name="prompt_signing_in">Signing In</string>
+    <string name="prompt_signing_up">Signing Up</string>
+
+    <string name="prompt_height">Height(cm)</string>
+    <string name="prompt_age">Age</string>
+    <string name="prompt_sex">Sex</string>
+
+    <string name="error_invalid_email">Email Invalid</string>
+    <string name="error_existed_username">The account exists!</string>
+
+    <string name="error_invalid_password">Too Short</string>
+    <string name="error_incorrect_password">Incorrect Password</string>
+    <string name="error_field_required">Required Field</string>
+
+    <string name="error_confirm_password">Password is inconsistent</string>
+    <string name="error_invalid_device_id">Device ID invalid</string>
+    <string name="error_un_sign_up_device_id">This device ID and user unsign up</string>
+
+    <string name="error_invalid_height">Height invalid</string>
+
+    <string name="title_activity_main_nav">Weightcardio</string>
+
+    <string name="navigation_drawer_open">Open drawer</string>
+    <string name="navigation_drawer_close">Close drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_exit_account">Exit</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_measure">Measure</string>
+    <string name="menu_chart">Chart</string>
+    <string name="menu_settings">Settings</string>
+
+    <string name="main_nav_get_user_info">Get your health data</string>
+    <string name="main_nav_height_text">Height(cm):</string>
+    <string name="main_nav_weight_text">Weight(kg):</string>
+    <string name="main_nav_bust_text">Bust:</string>
+    <string name="main_nav_waistline_text">Waistline:</string>
+    <string name="main_nav_hipline_text">Hipline:</string>
+    <string name="btn_get_health_data">Get Your Health Data</string>
+    <string name="title_activity_door">DoorActivity</string>
+    <string name="btn_scan">Scan</string>
+    <string name="btn_welcome_enter">Enter</string>
+
+    <string name="head_user_type">User:</string>
+    <string name="head_device_id">Device ID:</string>
+
+    <string name="tv_water">Water </string>
+    <string name="tv_metabolism">Metabolism </string>
+    <string name="tv_bone">Bone </string>
+    <string name="tv_fat">Fat </string>
+    <string name="tv_muscle">Muscle </string>
+    <string name="tv_vfat">vFat </string>
+    <string name="tv_bodyImpedance">bodyImpedance </string>
+
+</resources>

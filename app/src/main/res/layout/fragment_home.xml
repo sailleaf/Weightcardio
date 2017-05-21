@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_launch"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <com.github.glomadrian.grav.GravView
+        android:id="@+id/gravew"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:animationGenerators="@array/BubbleAnimations"
+        app:array_colors="@array/Spectral"
+        app:ball_from_size="10dp"
+        app:ball_to_size="20dp"
+        app:colorGenerator="com.github.glomadrian.grav.generator.paint.ArrayColorGenerator"
+        app:gravGenerator="com.github.glomadrian.grav.generator.grav.BallGenerator"
+        app:pointGenerator="com.github.glomadrian.grav.generator.point.RegularPointGenerator"
+        app:regular_cell_size="300"
+        app:regular_variance="200"
+        app:shake_direction="vertical"
+        app:shake_max_duration="20000"
+        app:shake_min_duration="10000"
+        app:shake_variance="500dp"
+        app:side_to_side_direction="leftToRight"
+        app:side_to_side_max_duration="10000"
+        app:side_to_side_min_duration="10000" />
+
+    <Button
+        android:id="@+id/btn_weight_sound"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_sound_style"
+        android:scaleType="centerCrop" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/id_swipe_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <com.leaf.yeyy.viewlib.ColorArcProgressBar
+                    android:id="@+id/pbar_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:back_color="@android:color/darker_gray"
+                    app:back_width="5dp"
+                    app:current_value_format="%.2f"
+                    app:front_color1="#DCEDC8"
+                    app:front_color2="#689F38"
+                    app:front_color3="#FF5252"
+                    app:front_width="8dp"
+                    app:is_need_content="true"
+                    app:is_need_title="true"
+                    app:is_need_unit="true"
+                    app:max_value="199"
+                    app:string_title="Your Weight"
+                    app:string_unit="kg"
+                    app:total_engle="270" />
+
+                <com.leaf.yeyy.viewlib.ColorArcProgressBar
+                    android:id="@+id/pbar_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:back_color="@android:color/darker_gray"
+                    app:back_width="5dp"
+                    app:current_value_format="%.1f"
+                    app:front_color1="#BDBDBD"
+                    app:front_color2="#CDDC39"
+                    app:front_color3="#FF5722"
+                    app:front_width="8dp"
+                    app:is_need_content="true"
+                    app:is_need_dial="true"
+                    app:is_need_title="true"
+                    app:is_need_unit="true"
+                    app:max_value="250"
+                    app:string_title="Your Height"
+                    app:string_unit="cm"
+                    app:total_engle="270" />
+            </LinearLayout>
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>
