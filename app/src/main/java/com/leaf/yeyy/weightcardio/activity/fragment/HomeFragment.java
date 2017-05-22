@@ -118,17 +118,16 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     }
 
     @Override
-    public void onStart() {
-        Log.d(TAG, "onStart");
-        super.onStart();
-        mHealthData.getHealthData(this);
+    protected void onVisible() {
+        super.onVisible();
+        mHealthData.getHealthDataFromNet(this);
     }
 
     @Override
     public void onRefresh() {
         Log.d(TAG, Thread.currentThread().getName());
         if (dWeight == INIT_VALUE || dHeight == INIT_VALUE) {
-            mHealthData.getHealthData(this);
+            mHealthData.getHealthDataFromNet(this);
         } else {
             if (mSwipeLayout.isRefreshing()) {
                 mSwipeLayout.setRefreshing(false);

@@ -20,10 +20,6 @@ import com.leaf.yeyy.weightcardio.preferences.SPKey;
 import com.leaf.yeyy.weightcardio.preferences.SharedPreferencesDao;
 import com.leaf.yeyy.weightcardio.utils.SHA1Utils;
 
-/**
- * Created by WIN10 on 2017/5/12.
- */
-
 public class ChartFragment extends BaseFragment implements IHealthDataCallback {
     private static final String TAG = ChartFragment.class.getSimpleName();
 
@@ -35,7 +31,7 @@ public class ChartFragment extends BaseFragment implements IHealthDataCallback {
     TextView tvMuscle;
     TextView tvVfat;
     TextView tvBodyImpedance;
-    Button btnGetRegisterInfo;
+    Button btnUpdateRegisterInfo;
 
     private String mParam1;
     private HealthDataBean mHealthDataBean;
@@ -48,6 +44,9 @@ public class ChartFragment extends BaseFragment implements IHealthDataCallback {
                     break;
                 case FAILURE_COMPLETE:
                     showUIResult(uiResult);
+                    break;
+                case REFRESH_COMPLETE:
+                    Toast.makeText(getActivity(), "" + uiResult, Toast.LENGTH_LONG).show();
                     break;
             }
         }
@@ -95,17 +94,17 @@ public class ChartFragment extends BaseFragment implements IHealthDataCallback {
         tvMuscle = (TextView) rootView.findViewById(R.id.tv_muscle);
         tvVfat = (TextView) rootView.findViewById(R.id.tv_vfat);
         tvBodyImpedance = (TextView) rootView.findViewById(R.id.tv_bodyImpedance);
-        btnGetRegisterInfo = (Button) rootView.findViewById(R.id.btn_query_register);
-        btnGetRegisterInfo.setOnClickListener(new View.OnClickListener() {
+        btnUpdateRegisterInfo = (Button) rootView.findViewById(R.id.btn_update_register_test);
+        btnUpdateRegisterInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                queryRegisterInfo();
+                updateRegisterInfo();
             }
         });
         super.initViews(rootView);  //一定放在最后面来调用
     }
 
-    private void queryRegisterInfo() {
+    private void updateRegisterInfo() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -119,7 +118,9 @@ public class ChartFragment extends BaseFragment implements IHealthDataCallback {
                             + "&age=24"
                             + "&sex=female";
                     Log.e(TAG, "" + param);
-                    Log.e(TAG, "" + HttpRequestUtil.sendGet(AppConstants.URL_UPDATE_SIGN_UP_INFO, param));
+                    String rs = HttpRequestUtil.sendGet(AppConstants.URL_UPDATE_SIGN_UP_INFO, param);
+                    Log.e(TAG, "" + rs);
+                    mUIHandler.obtainMessage(REFRESH_COMPLETE,rs).sendToTarget();
                 } catch (Exception ex) {
                     Log.e(TAG, "" + ex.getMessage());
                 }

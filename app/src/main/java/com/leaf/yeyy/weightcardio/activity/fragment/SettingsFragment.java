@@ -222,24 +222,32 @@ public class SettingsFragment extends BaseFragment {
         mItemViewData.setItemView(new BasicItemViewH(getActivity()));
         mListData.add(mItemViewData);
 
-
         mItemViewData = new SettingViewItemData();
         mItemData = new SettingData();
-        mItemData.setTitle("Item");
+        mItemData.setTitle("Alter Age");
+        mItemData.setSubTitle("");
         mItemViewData.setData(mItemData);
-        mItemViewData.setItemView(new SwitchItemView(getActivity()));
+        mItemViewData.setItemView(new BasicItemViewH(getActivity()));
         mListData.add(mItemViewData);
 
         mItemViewData = new SettingViewItemData();
         mItemData = new SettingData();
-        mItemData.setTitle("Item");
+        mItemData.setTitle("Alter Sex");
+        mItemData.setSubTitle("");
         mItemViewData.setData(mItemData);
-        mItemViewData.setItemView(new SwitchItemView(getActivity()));
+        mItemViewData.setItemView(new BasicItemViewH(getActivity()));
         mListData.add(mItemViewData);
+
+//        mItemViewData = new SettingViewItemData();
+//        mItemData = new SettingData();
+//        mItemData.setTitle("Item");
+//        mItemViewData.setData(mItemData);
+//        mItemViewData.setItemView(new SwitchItemView(getActivity()));
+//        mListData.add(mItemViewData);
 
         mItemViewData = new SettingViewItemData();
         mItemData = new SettingData();
-        mItemData.setTitle("Say Hello");
+        mItemData.setTitle("Hello Test");
         mItemData.setSubTitle("Go");
         //mItemData.setDrawable(getResources().getDrawable(R.drawable.main_footer_discovery_selected));
         mItemViewData.setData(mItemData);

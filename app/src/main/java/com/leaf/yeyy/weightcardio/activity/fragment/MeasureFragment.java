@@ -76,18 +76,16 @@ public class MeasureFragment extends BaseFragment implements IHealthDataCallback
         tvBust = (TextView) rootView.findViewById(R.id.tvBust);
         tvWaistline = (TextView) rootView.findViewById(R.id.tvWaistline);
         tvHipline = (TextView) rootView.findViewById(R.id.tvHipline);
-
-
         //mUsername = SharedPreferencesDao.getInstance().getData(SPKey.KEY_LAST_ACCOUNT, "", String.class);
 
         super.initViews(rootView);  //一定放在最后面来调用
     }
 
+
     @Override
-    public void onStart() {
-        Log.d(TAG, "onStart");
-        super.onStart();
-        mHealthData.getHealthData(this);
+    protected void onVisible() {
+        super.onVisible();
+        mHealthData.getHealthDataFromNet(this);
     }
 
     @Override
