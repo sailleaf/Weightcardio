@@ -8,11 +8,9 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.leaf.yeyy.weightcardio.R;
-import com.leaf.yeyy.weightcardio.activity.callback.ISignCallback;
+import com.leaf.yeyy.weightcardio.activity.callback.ICommonCallback;
 import com.leaf.yeyy.weightcardio.bean.SignInBean;
 import com.leaf.yeyy.weightcardio.bean.SignInInfoBean;
-import com.leaf.yeyy.weightcardio.bean.SignUpBean;
-import com.leaf.yeyy.weightcardio.bean.SignUpInfoBean;
 import com.leaf.yeyy.weightcardio.global.AppConstants;
 import com.leaf.yeyy.weightcardio.http.HttpRequestUtil;
 import com.leaf.yeyy.weightcardio.preferences.SPKey;
@@ -23,18 +21,14 @@ import java.util.Date;
 import java.util.Locale;
 
 
-/**
- * Created by WIN10 on 2017/5/10.
- */
-
 public class UserSignInAsyncTask extends AsyncTask<SignInBean, Void, String> {
     private static final String TAG = UserSignInAsyncTask.class.getSimpleName();
     private Context mContext;
-    private ISignCallback mSignInCallback;
+    private ICommonCallback mSignInCallback;
     private ProgressDialog mProgressDialog;
     private SignInBean mSignInBeen;
 
-    public UserSignInAsyncTask(Context context, ISignCallback signInCallback) {
+    public UserSignInAsyncTask(Context context, ICommonCallback signInCallback) {
         this.mContext = context;
         this.mSignInCallback = signInCallback;
     }

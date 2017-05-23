@@ -16,11 +16,15 @@ import com.leaf.yeyy.viewlib.SettingView;
 import com.leaf.yeyy.viewlib.entity.SettingData;
 import com.leaf.yeyy.viewlib.entity.SettingViewItemData;
 import com.leaf.yeyy.viewlib.item.BasicItemViewH;
-import com.leaf.yeyy.viewlib.item.SwitchItemView;
 import com.leaf.yeyy.weightcardio.R;
 import com.leaf.yeyy.weightcardio.activity.SignDoorActivity;
+import com.leaf.yeyy.weightcardio.activity.UpdateUserInfoActivity;
 import com.leaf.yeyy.weightcardio.activity.assistant.AudioPlayer;
 import com.leaf.yeyy.weightcardio.activity.fragment.base.BaseFragment;
+import com.leaf.yeyy.weightcardio.activity.fragment.view.AlterAge;
+import com.leaf.yeyy.weightcardio.activity.fragment.view.AlterHeight;
+import com.leaf.yeyy.weightcardio.activity.fragment.view.AlterPassword;
+import com.leaf.yeyy.weightcardio.activity.fragment.view.AlterSex;
 import com.leaf.yeyy.weightcardio.bean.HealthDataBean;
 import com.leaf.yeyy.weightcardio.global.AppConstants;
 import com.leaf.yeyy.weightcardio.http.HttpRequestUtil;
@@ -154,13 +158,48 @@ public class SettingsFragment extends BaseFragment {
             }
         });
 
+        initSettingView(rootView);
+
+        //=======================    FBI WARMMING !    这样子是很差劲的，说明没有写好=================
+        super.initViews(rootView);  //一定放在最后面来调用
+    }
+
+    private void initSettingView(View rootView) {
+
         mSettingView = (SettingView) rootView.findViewById(R.id.ios_style_setting_view_01);
         mSettingView.setOnSettingViewItemClickListener(new SettingView.onSettingViewItemClickListener() {
             @Override
             public void onItemClick(int index) {
-                Toast.makeText(getActivity(), "#" + index + " is been clicked", Toast.LENGTH_SHORT).show();
-                if (index == 2) {
-                    mSettingView.modifySubTitle("hello", index);
+                switch (index) {
+                    case 0: {
+                        AlterHeight alterHeight = new AlterHeight();
+                        alterHeight.getDialog(getActivity()).create().show();
+                        break;
+                    }
+                    case 1: {
+                        AlterAge alterAge = new AlterAge();
+                        alterAge.getDialog(getActivity()).create().show();
+                        break;
+                    }
+                    case 2: {
+                        AlterSex alterSex = new AlterSex();
+                        alterSex.getDialog(getActivity()).create().show();
+                        break;
+                    }
+                    case 3: {
+                        AlterPassword alterPassword = new AlterPassword();
+                        alterPassword.getDialog(getActivity()).create().show();
+                        break;
+                    }
+                    case 4: {
+                        Intent intent = new Intent(getActivity(), UpdateUserInfoActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    default: {
+                        Toast.makeText(getActivity(), "Uncatch #" + index, Toast.LENGTH_SHORT).show();
+                        break;
+                    }
                 }
             }
         });
@@ -168,18 +207,9 @@ public class SettingsFragment extends BaseFragment {
         mSettingView.setOnSettingViewItemSwitchListener(new SettingView.onSettingViewItemSwitchListener() {
             @Override
             public void onSwitchChanged(int index, boolean isChecked) {
-                if (index == 1) {
-                    if (isChecked) {
-                        Toast.makeText(getActivity(), "#" + index + " open", Toast.LENGTH_SHORT).show();
-                        test();
-                    } else {
-                        Toast.makeText(getActivity(), "#" + index + " close", Toast.LENGTH_SHORT).show();
-                    }
-                }
             }
         });
-        //=======================    FBI WARMMING !    这样子是很差劲的，说明没有写好=================
-        super.initViews(rootView);  //一定放在最后面来调用
+
     }
 
     @Override
@@ -190,11 +220,6 @@ public class SettingsFragment extends BaseFragment {
             mAudioPlayer.stop();
             mAudioPlayer = null;
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
     /**
@@ -247,8 +272,17 @@ public class SettingsFragment extends BaseFragment {
 
         mItemViewData = new SettingViewItemData();
         mItemData = new SettingData();
-        mItemData.setTitle("Hello Test");
-        mItemData.setSubTitle("Go");
+        mItemData.setTitle("Alter Password");
+        //mItemData.setSubTitle("Go");
+        //mItemData.setDrawable(getResources().getDrawable(R.drawable.main_footer_discovery_selected));
+        mItemViewData.setData(mItemData);
+        mItemViewData.setItemView(new BasicItemViewH(getActivity()));
+        mListData.add(mItemViewData);
+
+        mItemViewData = new SettingViewItemData();
+        mItemData = new SettingData();
+        mItemData.setTitle("Update Info");
+        //mItemData.setSubTitle("Go");
         //mItemData.setDrawable(getResources().getDrawable(R.drawable.main_footer_discovery_selected));
         mItemViewData.setData(mItemData);
         mItemViewData.setItemView(new BasicItemViewH(getActivity()));

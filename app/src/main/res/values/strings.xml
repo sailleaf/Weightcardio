@@ -27,6 +27,8 @@
     <string name="prompt_height">Height(cm)</string>
     <string name="prompt_age">Age</string>
     <string name="prompt_sex">Sex</string>
+    <string name="prompt_sex_male">Male</string>
+    <string name="prompt_sex_female">Female</string>
 
     <string name="error_invalid_email">Email Invalid</string>
     <string name="error_existed_username">The account exists!</string>
@@ -40,6 +42,7 @@
     <string name="error_un_sign_up_device_id">This device ID and user unsign up</string>
 
     <string name="error_invalid_height">Height invalid</string>
+    <string name="error_invalid_age">Age invalid</string>
 
     <string name="title_activity_main_nav">Weightcardio</string>
 
@@ -64,6 +67,7 @@
     <string name="title_activity_door">DoorActivity</string>
     <string name="btn_scan">Scan</string>
     <string name="btn_welcome_enter">Enter</string>
+    <string name="btn_update_user_info">Update</string>
 
     <string name="head_user_type">User:</string>
     <string name="head_device_id">Device ID:</string>

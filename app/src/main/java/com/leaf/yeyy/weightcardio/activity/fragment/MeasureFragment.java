@@ -77,7 +77,6 @@ public class MeasureFragment extends BaseFragment implements IHealthDataCallback
         tvWaistline = (TextView) rootView.findViewById(R.id.tvWaistline);
         tvHipline = (TextView) rootView.findViewById(R.id.tvHipline);
         //mUsername = SharedPreferencesDao.getInstance().getData(SPKey.KEY_LAST_ACCOUNT, "", String.class);
-
         super.initViews(rootView);  //一定放在最后面来调用
     }
 

@@ -8,7 +8,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.leaf.yeyy.weightcardio.R;
-import com.leaf.yeyy.weightcardio.activity.callback.ISignCallback;
+import com.leaf.yeyy.weightcardio.activity.callback.ICommonCallback;
 import com.leaf.yeyy.weightcardio.bean.SignUpBean;
 import com.leaf.yeyy.weightcardio.bean.SignUpInfoBean;
 import com.leaf.yeyy.weightcardio.global.AppConstants;
@@ -28,10 +28,11 @@ import java.util.Locale;
 public class UserSignUpAsyncTask extends AsyncTask<SignUpBean, Void, String> {
     private static final String TAG = UserSignUpAsyncTask.class.getSimpleName();
     private Context mContext;
-    private ISignCallback mSignUpCallback;
+    private ICommonCallback mSignUpCallback;
     private ProgressDialog mProgressDialog;
     private SignUpBean mSignUpBeen;
-    public UserSignUpAsyncTask(Context context, ISignCallback signUpCallback) {
+
+    public UserSignUpAsyncTask(Context context, ICommonCallback signUpCallback) {
         this.mContext = context;
         this.mSignUpCallback = signUpCallback;
     }

@@ -52,7 +52,6 @@ public class MainActivity extends BaseActivity {
                 case R.id.navigation_settings:
                     viewPager.setCurrentItem(3);
                     return true;
-
             }
             return false;
         }

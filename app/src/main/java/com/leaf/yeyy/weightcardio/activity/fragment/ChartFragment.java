@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,11 +13,6 @@ import com.leaf.yeyy.weightcardio.R;
 import com.leaf.yeyy.weightcardio.activity.callback.IHealthDataCallback;
 import com.leaf.yeyy.weightcardio.activity.fragment.base.BaseFragment;
 import com.leaf.yeyy.weightcardio.bean.HealthDataBean;
-import com.leaf.yeyy.weightcardio.global.AppConstants;
-import com.leaf.yeyy.weightcardio.http.HttpRequestUtil;
-import com.leaf.yeyy.weightcardio.preferences.SPKey;
-import com.leaf.yeyy.weightcardio.preferences.SharedPreferencesDao;
-import com.leaf.yeyy.weightcardio.utils.SHA1Utils;
 
 public class ChartFragment extends BaseFragment implements IHealthDataCallback {
     private static final String TAG = ChartFragment.class.getSimpleName();
@@ -31,7 +25,6 @@ public class ChartFragment extends BaseFragment implements IHealthDataCallback {
     TextView tvMuscle;
     TextView tvVfat;
     TextView tvBodyImpedance;
-    Button btnUpdateRegisterInfo;
 
     private String mParam1;
     private HealthDataBean mHealthDataBean;
@@ -94,39 +87,9 @@ public class ChartFragment extends BaseFragment implements IHealthDataCallback {
         tvMuscle = (TextView) rootView.findViewById(R.id.tv_muscle);
         tvVfat = (TextView) rootView.findViewById(R.id.tv_vfat);
         tvBodyImpedance = (TextView) rootView.findViewById(R.id.tv_bodyImpedance);
-        btnUpdateRegisterInfo = (Button) rootView.findViewById(R.id.btn_update_register_test);
-        btnUpdateRegisterInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateRegisterInfo();
-            }
-        });
         super.initViews(rootView);  //一定放在最后面来调用
     }
 
-    private void updateRegisterInfo() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    String account = SharedPreferencesDao.getInstance().getData(SPKey.KEY_LAST_ACCOUNT, "", String.class);
-                    String lastDeviceId = SharedPreferencesDao.getInstance().getData(SPKey.KEY_LAST_DEVICE_ID, "", String.class);
-                    String param = "userid=" + lastDeviceId + account
-                            + "&code=" + SHA1Utils.SHA256("123456")
-                            + "&deviceid=" + lastDeviceId
-                            + "&height=166"
-                            + "&age=24"
-                            + "&sex=female";
-                    Log.e(TAG, "" + param);
-                    String rs = HttpRequestUtil.sendGet(AppConstants.URL_UPDATE_SIGN_UP_INFO, param);
-                    Log.e(TAG, "" + rs);
-                    mUIHandler.obtainMessage(REFRESH_COMPLETE,rs).sendToTarget();
-                } catch (Exception ex) {
-                    Log.e(TAG, "" + ex.getMessage());
-                }
-            }
-        }).start();
-    }
 
     @Override
     protected void lazyLoadData(boolean isForceLoad) {

@@ -28,7 +28,7 @@ import com.leaf.yeyy.weightcardio.R;
 import com.leaf.yeyy.weightcardio.activity.assistant.ActivityHelper;
 import com.leaf.yeyy.weightcardio.activity.assistant.UserSignInAsyncTask;
 import com.leaf.yeyy.weightcardio.activity.assistant.UserSignUpAsyncTask;
-import com.leaf.yeyy.weightcardio.activity.callback.ISignCallback;
+import com.leaf.yeyy.weightcardio.activity.callback.ICommonCallback;
 import com.leaf.yeyy.weightcardio.base.BaseActivity;
 import com.leaf.yeyy.weightcardio.bean.SignInBean;
 import com.leaf.yeyy.weightcardio.bean.SignUpBean;
@@ -42,7 +42,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SignDoorActivity extends BaseActivity implements ISignCallback {
+public class SignDoorActivity extends BaseActivity implements ICommonCallback {
     private static final String TAG = SignDoorActivity.class.getSimpleName();
     private static final int REQ_CODE_CAMERA_PERMISSION = 0x1111;
     private static final int REQ_CODE_SIGN_IN = 0x2222;
@@ -268,7 +268,7 @@ public class SignDoorActivity extends BaseActivity implements ISignCallback {
 
         if (height.isEmpty()) {
             mInputHeight.setError(getString(R.string.error_invalid_height));
-            focusView = mInputSignUpPassword;
+            focusView = mInputHeight;
             valid = false;
         }
 
@@ -276,13 +276,13 @@ public class SignDoorActivity extends BaseActivity implements ISignCallback {
             double dheight = Double.parseDouble(height);
             if (dheight < 10 || dheight > 300) {
                 mInputHeight.setError(getString(R.string.error_invalid_height));
-                focusView = mInputSignUpPassword;
+                focusView = mInputHeight;
                 valid = false;
             }
         } catch (NumberFormatException e) {
             Log.e(TAG, "" + e.getMessage());
             mInputHeight.setError(getString(R.string.error_invalid_height));
-            focusView = mInputSignUpPassword;
+            focusView = mInputHeight;
             valid = false;
         }
 
