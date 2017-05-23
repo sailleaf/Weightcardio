@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.leaf.yeyy.weightcardio.R;
 import com.leaf.yeyy.weightcardio.activity.callback.IHealthDataCallback;
@@ -23,13 +24,13 @@ public class MeasureFragment extends BaseFragment implements IHealthDataCallback
 
     private Handler mUIHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
-            //String uiResult = msg.obj.toString();
+            String rs = msg.obj.toString();
             switch (msg.what) {
                 case SUCCESS_COMPLETE:
-                    showUIResult();
+                    showUIResult(rs);
                     break;
                 case FAILURE_COMPLETE:
-                    showUIResult();
+                    showUIResult(rs);
                     break;
             }
         }
@@ -91,17 +92,21 @@ public class MeasureFragment extends BaseFragment implements IHealthDataCallback
     protected void lazyLoadData(boolean isForceLoad) {
     }
 
-    private void showUIResult() {
-        tvBust.setText(getActivity().getString(R.string.main_nav_bust_text) + mHealthDataBean.getBust());
-        tvWaistline.setText(getActivity().getString(R.string.main_nav_waistline_text) + mHealthDataBean.getWaistline());
-        tvHipline.setText(getActivity().getString(R.string.main_nav_hipline_text) + mHealthDataBean.getHipline());
+    private void showUIResult(String msg) {
+        if ("succ".equals(msg)) {
+            tvBust.setText(getActivity().getString(R.string.main_nav_bust_text) + mHealthDataBean.getBust());
+            tvWaistline.setText(getActivity().getString(R.string.main_nav_waistline_text) + mHealthDataBean.getWaistline());
+            tvHipline.setText(getActivity().getString(R.string.main_nav_hipline_text) + mHealthDataBean.getHipline());
+        } else {
+            Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
     public void onSuccess(HealthDataBean healthDataBean) {
         Log.d(TAG, "Measure onSuccess");
         mHealthDataBean = healthDataBean;
-        mUIHandler.obtainMessage(SUCCESS_COMPLETE).sendToTarget();
+        mUIHandler.obtainMessage(SUCCESS_COMPLETE, "succ").sendToTarget();
     }
 
     @Override

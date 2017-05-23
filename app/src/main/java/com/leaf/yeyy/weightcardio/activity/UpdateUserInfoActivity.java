@@ -127,7 +127,6 @@ public class UpdateUserInfoActivity extends BaseActivity implements ICommonCallb
             mUpdateUserInfoAsyncTask = new UpdateUserInfoAsyncTask(this, this);
             mUpdateUserInfoAsyncTask.execute(signUpBean);
         }
-
     }
 
     /**
